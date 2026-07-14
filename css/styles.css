@@ -667,7 +667,12 @@ main {
 .tarjeta-animal__acciones {
   margin-top: var(--espacio-xs);
   display: flex;
+  flex-wrap: wrap;
   gap: var(--espacio-xs);
+}
+
+.tarjeta-animal__acciones .btn {
+  white-space: nowrap;
 }
 
 /* Container query: cuando el contenedor de la tarjeta supera ~420px de
