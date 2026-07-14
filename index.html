@@ -81,44 +81,61 @@
       <p class="seccion__kicker">Sobre la organización</p>
       <h2>Quiénes somos</h2>
     </div>
-    <div class="grid-dos-columnas">
-      <div class="reveal">
-        <p>APA La Plata (Asociación Protectora de Animales de La Plata) es una asociación civil sin fines de lucro fundada en 1982, dedicada al rescate, cuidado y reubicación de perros en situación de calle, abandono o maltrato en la ciudad de La Plata.</p>
-        <p>Sostenemos un refugio propio donde conviven decenas de perros a la espera de adopción, cerca de la Selva Marginal de Punta Lara. El trabajo es realizado por un grupo reducido de voluntarios y se financia con aportes de socios y donaciones: no recibimos ayuda estatal, desde 1982.</p>
-        <div class="mision-destacada">
-          <p class="mision-destacada__etiqueta">Nuestra misión</p>
-          <p class="mision-destacada__texto">Que ningún perro que pase por nuestras manos vuelva a la calle, y que cada adopción sea responsable y para toda la vida.</p>
-        </div>
+    <div class="texto-institucional reveal">
+      <p>APA La Plata (Asociación Protectora de Animales de La Plata) es una asociación civil sin fines de lucro fundada en 1982, dedicada al rescate, cuidado y reubicación de perros en situación de calle, abandono o maltrato en la ciudad de La Plata.</p>
+      <p>Sostenemos un refugio propio donde conviven decenas de perros a la espera de adopción, cerca de la Selva Marginal de Punta Lara. El trabajo es realizado por un grupo reducido de voluntarios y se financia con aportes de socios y donaciones: no recibimos ayuda estatal, desde 1982.</p>
+    </div>
+  </section>
+
+  <!-- Sección: Nuestra misión (cita destacada, organismo propio) -->
+  <section class="seccion--fondo-secundario">
+    <div class="contenedor mision-seccion reveal">
+      <svg class="mision-seccion__comilla" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7 7c-2.2 0-4 1.8-4 4v6h6v-6H6c0-1.1.9-2 2-2V7zm10 0c-2.2 0-4 1.8-4 4v6h6v-6h-3c0-1.1.9-2 2-2V7z"/>
+      </svg>
+      <p class="seccion__kicker" style="color: var(--color-primario);">Nuestra misión</p>
+      <p class="mision-seccion__cita">Que ningún perro que pase por nuestras manos vuelva a la calle, y que cada adopción sea responsable y para toda la vida.</p>
+    </div>
+  </section>
+
+  <!-- Sección: Galería (CarruselFotos panorámico, con leyenda por foto) -->
+  <section class="contenedor">
+    <div class="seccion__encabezado reveal">
+      <p class="seccion__kicker">Así vivimos</p>
+      <h2>Galería del refugio</h2>
+    </div>
+    <div class="carrusel-fotos carrusel-fotos--ancho reveal" aria-label="Fotos del refugio y sus perros" aria-roledescription="carrusel">
+      <div class="carrusel-fotos__viewport">
+        <ul class="carrusel-fotos__pista" id="carrusel-pista">
+          <li class="carrusel-fotos__slide">
+            <img src="img/perros/pancho-2.jpg" alt="Pancho corriendo y jugando en el patio del refugio" loading="lazy">
+            <span class="carrusel-fotos__caption">Pancho</span>
+          </li>
+          <li class="carrusel-fotos__slide">
+            <img src="img/perros/india.jpg" alt="India, perra color canela con arnés rosa" loading="lazy">
+            <span class="carrusel-fotos__caption">India</span>
+          </li>
+          <li class="carrusel-fotos__slide">
+            <img src="img/perros/rufus.jpg" alt="Rufus asomado en la puerta de su caseta" loading="lazy">
+            <span class="carrusel-fotos__caption">Rufus</span>
+          </li>
+          <li class="carrusel-fotos__slide">
+            <img src="img/perros/pancho-3.jpg" alt="Pancho junto al alambrado del refugio" loading="lazy">
+            <span class="carrusel-fotos__caption">Pancho</span>
+          </li>
+        </ul>
       </div>
-      <div class="carrusel-fotos reveal reveal--retraso-1" aria-label="Fotos del refugio y sus perros" aria-roledescription="carrusel">
-        <div class="carrusel-fotos__viewport">
-          <ul class="carrusel-fotos__pista" id="carrusel-pista">
-            <li class="carrusel-fotos__slide">
-              <img src="img/perros/pancho-2.jpg" alt="Pancho corriendo y jugando en el patio del refugio" loading="lazy">
-            </li>
-            <li class="carrusel-fotos__slide">
-              <img src="img/perros/india.jpg" alt="India, perra color canela con arnés rosa" loading="lazy">
-            </li>
-            <li class="carrusel-fotos__slide">
-              <img src="img/perros/rufus.jpg" alt="Rufus asomado en la puerta de su caseta" loading="lazy">
-            </li>
-            <li class="carrusel-fotos__slide">
-              <img src="img/perros/pancho-3.jpg" alt="Pancho junto al alambrado del refugio" loading="lazy">
-            </li>
-          </ul>
-        </div>
-        <button type="button" class="carrusel-fotos__control carrusel-fotos__control--prev" data-carrusel-prev aria-label="Foto anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
-        </button>
-        <button type="button" class="carrusel-fotos__control carrusel-fotos__control--next" data-carrusel-next aria-label="Foto siguiente">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
-        </button>
-        <div class="carrusel-fotos__dots" role="tablist" aria-label="Seleccionar foto">
-          <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="0" aria-label="Foto 1" aria-current="true"></button>
-          <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="1" aria-label="Foto 2"></button>
-          <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="2" aria-label="Foto 3"></button>
-          <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="3" aria-label="Foto 4"></button>
-        </div>
+      <button type="button" class="carrusel-fotos__control carrusel-fotos__control--prev" data-carrusel-prev aria-label="Foto anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+      </button>
+      <button type="button" class="carrusel-fotos__control carrusel-fotos__control--next" data-carrusel-next aria-label="Foto siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
+      <div class="carrusel-fotos__dots" role="tablist" aria-label="Seleccionar foto">
+        <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="0" aria-label="Foto 1" aria-current="true"></button>
+        <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="1" aria-label="Foto 2"></button>
+        <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="2" aria-label="Foto 3"></button>
+        <button type="button" class="carrusel-fotos__dot" data-carrusel-dot="3" aria-label="Foto 4"></button>
       </div>
     </div>
   </section>
