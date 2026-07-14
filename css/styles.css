@@ -241,7 +241,7 @@ main {
 }
 
 .colaborar-tarjeta .lista-simple {
-  margin-bottom: var(--espacio-sm);
+  margin-bottom: var(--espacio-md);
 }
 
 .colaborar-tarjeta__nota {
@@ -857,14 +857,14 @@ main {
   width: 2.25rem;
   height: 2.25rem;
   margin: 0 auto var(--espacio-xs);
-  color: var(--color-primario);
+  color: var(--color-secundario);
 }
 
 .mision-seccion__cita {
   font-size: clamp(1.5rem, 1.1rem + 2vw, var(--tipo-display));
   font-weight: 600;
   line-height: 1.4;
-  color: var(--color-texto-inverso);
+  color: var(--color-texto);
   margin: 0;
 }
 
@@ -924,6 +924,16 @@ main {
    el carrusel destaque como banda ancha en vez de foto cuadrada. */
 .carrusel-fotos--ancho .carrusel-fotos__viewport {
   aspect-ratio: 16 / 9;
+}
+
+/* A todo el ancho del viewport, como HeroInicio */
+.carrusel-fotos--completo {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.carrusel-fotos--completo .carrusel-fotos__viewport {
+  border-radius: 0;
 }
 
 .carrusel-fotos__pista {
