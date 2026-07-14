@@ -449,6 +449,14 @@ main {
   height: 45%;
 }
 
+.imagen-animal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+}
+
 .imagen-animal--paleta-1 { background: linear-gradient(160deg, var(--color-secundario), var(--color-secundario-hover)); }
 .imagen-animal--paleta-2 { background: linear-gradient(160deg, var(--color-primario), var(--color-primario-hover)); }
 .imagen-animal--paleta-3 { background: linear-gradient(160deg, #8a7550, var(--color-secundario)); }
@@ -970,6 +978,18 @@ main {
 
 .detalle-animal__imagen .imagen-animal {
   aspect-ratio: 4 / 3;
+}
+
+.detalle-animal__galeria {
+  display: flex;
+  gap: var(--espacio-xs);
+  margin-top: var(--espacio-xs);
+}
+
+.detalle-animal__galeria .imagen-animal {
+  aspect-ratio: 1 / 1;
+  width: 5rem;
+  flex-shrink: 0;
 }
 
 .detalle-animal__meta {
