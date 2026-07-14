@@ -47,6 +47,60 @@
 }
 
 /* ==========================================================================
+   Animaciones
+   Keyframes y utilidades reutilizadas por componentes de todo el sitio.
+   Se respeta prefers-reduced-motion para accesibilidad.
+   ========================================================================== */
+
+@keyframes aparecer-subiendo {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes girar-suave {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(4deg); }
+}
+
+/* .reveal: se activa vía IntersectionObserver (js/main.js) agregando
+   .reveal--visible cuando el elemento entra en el viewport. */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--retraso-1 { transition-delay: 0.08s; }
+.reveal--retraso-2 { transition-delay: 0.16s; }
+.reveal--retraso-3 { transition-delay: 0.24s; }
+.reveal--retraso-4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
    Reset básico
    ========================================================================== */
 
@@ -58,6 +112,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -253,23 +308,40 @@ main {
   padding: 0.5rem 0.75rem;
   color: var(--color-texto);
   cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-toggle:hover {
+  border-color: var(--color-secundario);
+  color: var(--color-secundario);
 }
 
 .nav-toggle__icono {
   width: 1.25rem;
   height: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icono {
+  transform: rotate(90deg);
 }
 
 .nav-principal {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: var(--espacio-xs);
-  padding-block: var(--espacio-sm);
+  padding-block: 0;
   border-top: 1px solid var(--color-borde);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease, padding-block 0.35s ease;
 }
 
 .nav-principal.esta-abierto {
-  display: flex;
+  max-height: 24rem;
+  opacity: 1;
+  padding-block: var(--espacio-sm);
 }
 
 .nav-principal__lista {
@@ -282,17 +354,37 @@ main {
 }
 
 .nav-principal__enlace {
+  position: relative;
   display: block;
   padding: 0.5rem 0.25rem;
   text-decoration: none;
   color: var(--color-texto);
   font-weight: 600;
   border-radius: var(--radio-sm);
+  transition: color 0.15s ease;
+}
+
+.nav-principal__enlace::after {
+  content: '';
+  position: absolute;
+  left: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.15rem;
+  height: 2px;
+  background-color: var(--color-secundario);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
 }
 
 .nav-principal__enlace:hover,
 .nav-principal__enlace[aria-current="page"] {
   color: var(--color-secundario);
+}
+
+.nav-principal__enlace:hover::after,
+.nav-principal__enlace[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 
 .nav-principal__redes {
@@ -315,6 +407,10 @@ main {
     border-top: none;
     padding-block: 0;
     flex: 1;
+    max-height: none;
+    overflow: visible;
+    opacity: 1;
+    transition: none;
   }
 
   .nav-principal__lista {
@@ -344,7 +440,17 @@ main {
   text-decoration: none;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px var(--color-sombra);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .btn-primario {
@@ -407,11 +513,13 @@ main {
   padding: 0.65rem 0.85rem;
   background-color: var(--color-superficie);
   color: var(--color-texto);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .campo-texto:focus {
   outline: 2px solid var(--color-secundario);
   outline-offset: 1px;
+  border-color: var(--color-secundario);
 }
 
 /* Ícono de red social */
@@ -425,6 +533,12 @@ main {
   border: 1px solid currentColor;
   color: inherit;
   text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.icono-red:hover {
+  transform: translateY(-3px) scale(1.06);
+  background-color: rgba(232, 178, 58, 0.15);
 }
 
 .icono-red svg {
@@ -475,6 +589,30 @@ main {
   border-radius: var(--radio-md);
   overflow: hidden;
   box-shadow: 0 1px 2px var(--color-sombra);
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarjeta-animal:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px var(--color-sombra);
+}
+
+.tarjeta-animal__imagen-envoltorio {
+  overflow: hidden;
+}
+
+.tarjeta-animal__imagen-envoltorio img {
+  transition: transform 0.4s ease;
+}
+
+.tarjeta-animal:hover .tarjeta-animal__imagen-envoltorio img {
+  transform: scale(1.08);
+}
+
+.tarjeta-animal--oculta {
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
 }
 
 .tarjeta-animal__layout {
@@ -655,6 +793,12 @@ main {
   border-radius: var(--radio-md);
   padding: var(--espacio-md) var(--espacio-sm);
   text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dato-institucional:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px var(--color-sombra);
 }
 
 .dato-institucional__numero {
@@ -681,6 +825,37 @@ main {
   }
 }
 
+/* GaleriaFotos — mosaico de fotos reales del refugio */
+.galeria-fotos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-sm);
+}
+
+.galeria-fotos__item {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  box-shadow: 0 1px 2px var(--color-sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.galeria-fotos__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px var(--color-sombra);
+}
+
+.galeria-fotos__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.galeria-fotos__item:hover img {
+  transform: scale(1.1);
+}
+
 /* ==========================================================================
    Organismos
    ========================================================================== */
@@ -704,6 +879,17 @@ main {
   }
 }
 
+.hero-inicio__kicker,
+.hero-inicio__titulo,
+.hero-inicio__texto,
+.hero-inicio__acciones {
+  animation: aparecer-subiendo 0.7s ease both;
+}
+
+.hero-inicio__titulo { animation-delay: 0.08s; }
+.hero-inicio__texto { animation-delay: 0.16s; }
+.hero-inicio__acciones { animation-delay: 0.24s; }
+
 .hero-inicio__titulo {
   font-size: var(--tipo-display);
   margin-bottom: var(--espacio-sm);
@@ -712,7 +898,6 @@ main {
 .hero-inicio__texto {
   font-size: var(--tipo-grande);
   color: var(--color-texto-inverso);
-  opacity: 0.92;
   max-width: 45ch;
 }
 
@@ -738,6 +923,7 @@ main {
   max-width: 22rem;
   margin-inline: auto;
   color: var(--color-primario);
+  animation: flotar 6s ease-in-out infinite;
 }
 
 /* GrillaAdopcion — Grid macro de 12 columnas reagrupado según breakpoint */
@@ -824,6 +1010,16 @@ main {
   border-radius: var(--radio-md);
   padding: var(--espacio-md) var(--espacio-sm);
   border: 1px solid var(--color-borde);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pasos__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px var(--color-sombra);
+}
+
+.pasos__item:hover::before {
+  animation: girar-suave 0.4s ease-in-out alternate 2;
 }
 
 .pasos__item::before {
@@ -959,6 +1155,14 @@ main {
   color: var(--color-texto);
 }
 
+.tabla-info tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.tabla-info tbody tr:hover {
+  background-color: var(--color-fondo);
+}
+
 /* ==========================================================================
    Página de detalle de animal
    ========================================================================== */
@@ -1017,6 +1221,11 @@ main {
   font-size: var(--tipo-pequeno);
   font-weight: 700;
   border: 1px solid var(--color-borde);
+  transition: transform 0.2s ease;
+}
+
+.muestra-color:hover {
+  transform: translateY(-4px) scale(1.02);
 }
 
 .grilla-muestras {

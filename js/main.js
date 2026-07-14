@@ -33,8 +33,22 @@
       var coincideTamano = tamanos.length === 0 || tamanos.indexOf(tarjeta.dataset.tamano) !== -1;
       var coincideEdad = edades.length === 0 || edades.indexOf(tarjeta.dataset.edad) !== -1;
       var mostrar = coincideTamano && coincideEdad;
-      tarjeta.style.display = mostrar ? '' : 'none';
-      if (mostrar) visibles++;
+
+      if (mostrar) {
+        tarjeta.style.display = '';
+        // fuerza reflow para que la transición de reaparición se dispare
+        void tarjeta.offsetWidth;
+        tarjeta.classList.remove('tarjeta-animal--oculta');
+        visibles++;
+      } else if (!tarjeta.classList.contains('tarjeta-animal--oculta')) {
+        tarjeta.classList.add('tarjeta-animal--oculta');
+        tarjeta.addEventListener('transitionend', function ocultar() {
+          tarjeta.removeEventListener('transitionend', ocultar);
+          if (tarjeta.classList.contains('tarjeta-animal--oculta')) {
+            tarjeta.style.display = 'none';
+          }
+        });
+      }
     });
 
     var mensajeVacio = grilla.querySelector('.grilla-adopcion__resultado-vacio');
@@ -60,4 +74,25 @@
       aplicarFiltros();
     });
   }
+})();
+
+(function () {
+  var elementos = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (!elementos.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    elementos.forEach(function (el) { el.classList.add('reveal--visible'); });
+    return;
+  }
+
+  var observador = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (entrada) {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('reveal--visible');
+        observador.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  elementos.forEach(function (el) { observador.observe(el); });
 })();

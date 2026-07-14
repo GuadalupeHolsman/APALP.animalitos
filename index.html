@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body>
 <div class="pagina">
@@ -59,7 +60,7 @@
   <section class="hero-inicio">
     <div class="contenedor hero-inicio__grid">
       <div>
-        <p class="seccion__kicker" style="color: var(--color-primario);">Refugio en La Plata desde 1982</p>
+        <p class="seccion__kicker hero-inicio__kicker" style="color: var(--color-primario);">Refugio en La Plata desde 1982</p>
         <h1 class="hero-inicio__titulo">Cada perro rescatado merece un hogar de verdad.</h1>
         <p class="hero-inicio__texto">Somos una asociación civil sin fines de lucro. Rescatamos, cuidamos y buscamos familia para perros en situación de calle, abandono o maltrato en La Plata — sin ayuda estatal, sostenidos por socios, donantes y voluntarios.</p>
         <div class="hero-inicio__acciones">
@@ -76,32 +77,28 @@
 
   <!-- Sección: Sobre APA (institucional) -->
   <section id="sobre" class="contenedor">
-    <div class="seccion__encabezado">
+    <div class="seccion__encabezado reveal">
       <p class="seccion__kicker">Sobre la organización</p>
       <h2>Quiénes somos</h2>
     </div>
     <div class="grid-dos-columnas">
-      <div>
+      <div class="reveal">
         <p>APA La Plata (Asociación Protectora de Animales de La Plata) es una asociación civil sin fines de lucro fundada en 1982, dedicada al rescate, cuidado y reubicación de perros en situación de calle, abandono o maltrato en la ciudad de La Plata.</p>
-        <p>Sostenemos un refugio propio donde conviven decenas de perros a la espera de adopción, cerca de la Selva Marginal de Punta Lara. El trabajo es realizado por un grupo reducido de voluntarios y se financia con aportes de socios y donaciones: no recibimos ayuda estatal.</p>
+        <p>Sostenemos un refugio propio donde conviven decenas de perros a la espera de adopción, cerca de la Selva Marginal de Punta Lara. El trabajo es realizado por un grupo reducido de voluntarios y se financia con aportes de socios y donaciones: no recibimos ayuda estatal, desde 1982.</p>
         <p><strong>Nuestra misión</strong> es simple: que ningún perro que pase por nuestras manos vuelva a la calle, y que cada adopción sea responsable y para toda la vida.</p>
       </div>
-      <div class="grilla-datos" aria-label="Datos institucionales">
-        <div class="dato-institucional">
-          <span class="dato-institucional__numero">43</span>
-          <span class="dato-institucional__etiqueta">años de trabajo ininterrumpido</span>
+      <div class="galeria-fotos reveal reveal--retraso-1" aria-label="Fotos del refugio y sus perros">
+        <div class="galeria-fotos__item">
+          <img src="img/perros/pancho-2.jpg" alt="Pancho corriendo y jugando en el patio del refugio" loading="lazy">
         </div>
-        <div class="dato-institucional">
-          <span class="dato-institucional__numero">+900</span>
-          <span class="dato-institucional__etiqueta">perros con hogar</span>
+        <div class="galeria-fotos__item">
+          <img src="img/perros/india.jpg" alt="India, perra color canela con arnés rosa" loading="lazy">
         </div>
-        <div class="dato-institucional">
-          <span class="dato-institucional__numero">0</span>
-          <span class="dato-institucional__etiqueta">ayuda estatal recibida</span>
+        <div class="galeria-fotos__item">
+          <img src="img/perros/rufus.jpg" alt="Rufus asomado en la puerta de su caseta" loading="lazy">
         </div>
-        <div class="dato-institucional">
-          <span class="dato-institucional__numero">100%</span>
-          <span class="dato-institucional__etiqueta">a pulmón de socios y voluntarios</span>
+        <div class="galeria-fotos__item">
+          <img src="img/perros/pancho-3.jpg" alt="Pancho junto al alambrado del refugio" loading="lazy">
         </div>
       </div>
     </div>
@@ -109,14 +106,14 @@
 
   <!-- Sección: Perros destacados (reutiliza TarjetaAnimal en contenedores más anchos) -->
   <section class="contenedor">
-    <div class="seccion__encabezado">
+    <div class="seccion__encabezado reveal">
       <p class="seccion__kicker">Buscan familia</p>
       <h2>Algunos de nuestros rescatados</h2>
       <p>Estos son solo algunos de los perros que esperan en el refugio. Conocé el catálogo completo y filtralo por tamaño y edad.</p>
     </div>
 
     <div class="grilla-destacados">
-      <article class="tarjeta-animal">
+      <article class="tarjeta-animal reveal">
         <div class="tarjeta-animal__layout">
           <div class="tarjeta-animal__imagen-envoltorio">
             <div class="imagen-animal">
@@ -141,7 +138,7 @@
         </div>
       </article>
 
-      <article class="tarjeta-animal">
+      <article class="tarjeta-animal reveal reveal--retraso-1">
         <div class="tarjeta-animal__layout">
           <div class="tarjeta-animal__imagen-envoltorio">
             <div class="imagen-animal imagen-animal--paleta-2">
@@ -175,25 +172,25 @@
   <!-- Sección: Cómo adoptar (SeccionProceso) -->
   <section class="seccion--fondo-primario">
     <div class="contenedor">
-      <div class="seccion__encabezado">
+      <div class="seccion__encabezado reveal">
         <p class="seccion__kicker" style="color: var(--color-secundario);">Proceso</p>
         <h2>Cómo adoptar</h2>
         <p>La adopción es responsable y gratuita. Estos son los pasos que seguimos con cada familia.</p>
       </div>
       <ol class="pasos">
-        <li class="pasos__item">
+        <li class="pasos__item reveal">
           <h3 class="pasos__titulo">Elegí</h3>
           <p class="pasos__texto">Mirá el catálogo de perros disponibles y encontrá el que mejor se adapte a tu casa y tu rutina.</p>
         </li>
-        <li class="pasos__item">
+        <li class="pasos__item reveal reveal--retraso-1">
           <h3 class="pasos__titulo">Conversemos</h3>
           <p class="pasos__texto">Nos contactamos para conocer tu situación: espacio, otros animales, experiencia previa.</p>
         </li>
-        <li class="pasos__item">
+        <li class="pasos__item reveal reveal--retraso-2">
           <h3 class="pasos__titulo">Visita</h3>
           <p class="pasos__texto">Coordinamos una visita al refugio o a tu casa para asegurarnos de que sea un buen lugar.</p>
         </li>
-        <li class="pasos__item">
+        <li class="pasos__item reveal reveal--retraso-3">
           <h3 class="pasos__titulo">Adopción</h3>
           <p class="pasos__texto">Firmamos el compromiso de adopción responsable y hacemos seguimiento las primeras semanas.</p>
         </li>
@@ -203,17 +200,17 @@
 
   <!-- Sección: Cómo colaborar -->
   <section class="contenedor">
-    <div class="seccion__encabezado">
+    <div class="seccion__encabezado reveal">
       <p class="seccion__kicker">Sumate</p>
       <h2>Cómo colaborar</h2>
     </div>
     <div class="grid-dos-columnas">
-      <article>
+      <article class="reveal">
         <h3>Hacete socio</h3>
         <p>Con un aporte mensual sostenés la comida, la atención veterinaria y el mantenimiento del refugio. Es la forma más estable de ayudarnos a planificar.</p>
         <a href="contacto.html" class="btn btn-primario">Quiero ser socio</a>
       </article>
-      <article>
+      <article class="reveal reveal--retraso-1">
         <h3>Doná</h3>
         <p>Aceptamos donaciones puntuales en alimento balanceado, elementos de limpieza, insumos veterinarios o dinero en efectivo entregado en el refugio.</p>
         <a href="contacto.html" class="btn btn-secundario">Consultar cómo donar</a>
