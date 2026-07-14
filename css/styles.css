@@ -19,8 +19,6 @@
   --color-borde: #E7DCC3;
   --color-texto-inverso: #FBF6EC;
   --color-sombra: rgba(42, 38, 34, 0.10);
-  --color-primario-velo: rgba(232, 178, 58, 0.88);
-  --color-secundario-velo: rgba(47, 93, 80, 0.88);
 
   /* Estados de EtiquetaEstado */
   --color-estado-disponible-fondo: #E1EEE8;
@@ -233,35 +231,23 @@ main {
   color: var(--color-texto-inverso);
 }
 
-/* Secciones con foto de fondo (velo de color + imagen), para dar más
-   protagonismo a las fotos del refugio en el resto de la página. */
-.seccion--foto-primario {
-  background-image: linear-gradient(var(--color-primario-velo), var(--color-primario-velo)), url('../img/perros/rufus.jpg');
-  background-size: cover;
-  background-position: center;
-  padding-block: var(--espacio-lg);
-}
-
-.seccion--foto-secundario {
-  background-image: linear-gradient(var(--color-secundario-velo), var(--color-secundario-velo)), url('../img/perros/pancho-3.jpg');
-  background-size: cover;
-  background-position: center;
-  color: var(--color-texto-inverso);
-  padding-block: var(--espacio-lg);
-}
-
-.seccion--foto-secundario a:not(.btn) {
-  color: var(--color-texto-inverso);
-}
-
-/* Tarjeta de contenido para artículos sobre fondo fotográfico (misma
-   lógica que .pasos__item: superficie sólida legible sobre la foto). */
+/* Tarjeta de contenido para los artículos de "Cómo colaborar": misma
+   lógica que .pasos__item, superficie propia para separar cada bloque. */
 .colaborar-tarjeta {
   background-color: var(--color-superficie);
-  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
   border-radius: var(--radio-md);
   padding: var(--espacio-md);
-  box-shadow: 0 4px 16px var(--color-sombra);
+}
+
+.colaborar-tarjeta .lista-simple {
+  margin-bottom: var(--espacio-sm);
+}
+
+.colaborar-tarjeta__nota {
+  font-size: var(--tipo-pequeno);
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espacio-sm);
 }
 
 /* Grid de dos columnas para bloques institucionales: macro-layout con Grid,
