@@ -786,6 +786,32 @@ main {
   }
 }
 
+/* MisionDestacada — callout para resaltar la misión institucional */
+.mision-destacada {
+  background-color: var(--color-primario);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-md);
+  margin-top: var(--espacio-md);
+  position: relative;
+}
+
+.mision-destacada__etiqueta {
+  font-size: var(--tipo-pequeno);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secundario);
+  margin: 0 0 0.35rem 0;
+}
+
+.mision-destacada__texto {
+  font-size: var(--tipo-grande);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-texto);
+  margin: 0;
+}
+
 /* DatoInstitucional */
 .dato-institucional {
   container-type: inline-size;
@@ -825,35 +851,106 @@ main {
   }
 }
 
-/* GaleriaFotos — mosaico de fotos reales del refugio */
-.galeria-fotos {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--espacio-sm);
+/* CarruselFotos — carrusel de fotos reales del refugio, con swipe nativo
+   (scroll-snap) además de controles y autoplay por JS (js/main.js). */
+.carrusel-fotos {
+  position: relative;
 }
 
-.galeria-fotos__item {
+.carrusel-fotos__viewport {
   aspect-ratio: 1 / 1;
   border-radius: var(--radio-md);
   overflow: hidden;
   box-shadow: 0 1px 2px var(--color-sombra);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.galeria-fotos__item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px var(--color-sombra);
+.carrusel-fotos__pista {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.galeria-fotos__item img {
+.carrusel-fotos__pista::-webkit-scrollbar {
+  display: none;
+}
+
+.carrusel-fotos__slide {
+  flex: 0 0 100%;
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.carrusel-fotos__slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
 }
 
-.galeria-fotos__item:hover img {
-  transform: scale(1.1);
+.carrusel-fotos__control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: var(--radio-pill);
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px var(--color-sombra);
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.carrusel-fotos__control svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.carrusel-fotos__control:hover {
+  background-color: var(--color-secundario);
+  color: var(--color-texto-inverso);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carrusel-fotos__control--prev {
+  left: 0.75rem;
+}
+
+.carrusel-fotos__control--next {
+  right: 0.75rem;
+}
+
+.carrusel-fotos__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: var(--espacio-sm);
+}
+
+.carrusel-fotos__dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radio-pill);
+  background-color: var(--color-borde);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carrusel-fotos__dot[aria-current="true"] {
+  background-color: var(--color-secundario);
+  transform: scale(1.35);
 }
 
 /* ==========================================================================

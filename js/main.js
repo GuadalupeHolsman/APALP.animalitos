@@ -96,3 +96,92 @@
 
   elementos.forEach(function (el) { observador.observe(el); });
 })();
+
+(function () {
+  var carruseles = Array.prototype.slice.call(document.querySelectorAll('.carrusel-fotos'));
+
+  carruseles.forEach(function (carrusel) {
+    var pista = carrusel.querySelector('.carrusel-fotos__pista');
+    var slides = Array.prototype.slice.call(carrusel.querySelectorAll('.carrusel-fotos__slide'));
+    var dots = Array.prototype.slice.call(carrusel.querySelectorAll('.carrusel-fotos__dot'));
+    var btnPrev = carrusel.querySelector('[data-carrusel-prev]');
+    var btnNext = carrusel.querySelector('[data-carrusel-next]');
+    if (!pista || !slides.length) return;
+
+    var indiceActual = 0;
+    var timerAutoplay = null;
+
+    function irASlide(indice) {
+      indiceActual = (indice + slides.length) % slides.length;
+      pista.scrollTo({ left: slides[indiceActual].offsetLeft, behavior: 'smooth' });
+      actualizarDots();
+    }
+
+    function actualizarDots() {
+      dots.forEach(function (dot, i) {
+        dot.setAttribute('aria-current', i === indiceActual ? 'true' : 'false');
+      });
+    }
+
+    function detenerAutoplay() {
+      if (timerAutoplay) {
+        window.clearInterval(timerAutoplay);
+        timerAutoplay = null;
+      }
+    }
+
+    function iniciarAutoplay() {
+      detenerAutoplay();
+      timerAutoplay = window.setInterval(function () {
+        irASlide(indiceActual + 1);
+      }, 4500);
+    }
+
+    if (btnPrev) {
+      btnPrev.addEventListener('click', function () {
+        irASlide(indiceActual - 1);
+        iniciarAutoplay();
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener('click', function () {
+        irASlide(indiceActual + 1);
+        iniciarAutoplay();
+      });
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        irASlide(i);
+        iniciarAutoplay();
+      });
+    });
+
+    // Sincroniza el índice/los puntos cuando el usuario hace swipe manual
+    var sincronizarDesdeScroll = debounce(function () {
+      var anchoSlide = slides[0].offsetWidth || 1;
+      indiceActual = Math.round(pista.scrollLeft / anchoSlide);
+      actualizarDots();
+    }, 100);
+    pista.addEventListener('scroll', sincronizarDesdeScroll);
+
+    carrusel.addEventListener('mouseenter', detenerAutoplay);
+    carrusel.addEventListener('mouseleave', iniciarAutoplay);
+    carrusel.addEventListener('focusin', detenerAutoplay);
+    carrusel.addEventListener('focusout', iniciarAutoplay);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      iniciarAutoplay();
+    }
+  });
+
+  function debounce(fn, espera) {
+    var manija;
+    return function () {
+      var contexto = this, args = arguments;
+      window.clearTimeout(manija);
+      manija = window.setTimeout(function () { fn.apply(contexto, args); }, espera);
+    };
+  }
+})();
