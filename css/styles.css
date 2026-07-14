@@ -828,6 +828,36 @@ main {
 /* Texto institucional: columna de lectura para la sección "Sobre APA" */
 .texto-institucional {
   max-width: 65ch;
+  position: relative;
+  z-index: 1;
+}
+
+/* HuellasDecorativas — rastro de patitas ilustrado en "Quiénes somos",
+   desde justo debajo del encabezado hasta el borde de "Nuestra misión".
+   Solo decorativo (aria-hidden) y visible desde desktop, donde hay
+   espacio en blanco a la derecha del texto para alojarlo sin taparlo. */
+.seccion-sobre {
+  position: relative;
+}
+
+.huellas-decorativas {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .huellas-decorativas {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.huellas-decorativas__pata {
+  position: absolute;
+  color: var(--color-primario);
+  opacity: 0.9;
 }
 
 /* MisionSeccion — organismo propio, cita destacada a pantalla completa */
