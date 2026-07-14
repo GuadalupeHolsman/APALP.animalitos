@@ -235,6 +235,7 @@ main {
    lógica que .pasos__item, superficie propia para separar cada bloque. */
 .colaborar-tarjeta {
   background-color: var(--color-superficie);
+  color: var(--color-texto);
   border: 1px solid var(--color-borde);
   border-radius: var(--radio-md);
   padding: var(--espacio-md);
@@ -855,20 +856,24 @@ main {
   max-width: 44rem;
   margin-inline: auto;
   text-align: center;
+  background-color: var(--color-superficie);
+  border: 2px solid var(--color-primario);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-lg) var(--espacio-md);
 }
 
 .mision-seccion__comilla {
   width: 2.25rem;
   height: 2.25rem;
   margin: 0 auto var(--espacio-xs);
-  color: var(--color-secundario);
+  color: var(--color-primario);
 }
 
 .mision-seccion__cita {
   font-size: clamp(1.5rem, 1.1rem + 2vw, var(--tipo-display));
   font-weight: 600;
   line-height: 1.4;
-  color: var(--color-texto-inverso);
+  color: var(--color-texto);
   margin: 0;
 }
 
@@ -1048,7 +1053,7 @@ main {
 
 /* HeroInicio — único organismo que excede el ancho de lectura como fondo */
 .hero-inicio {
-  background: linear-gradient(135deg, var(--color-secundario), var(--color-secundario-hover));
+  background-color: var(--color-secundario);
   color: var(--color-texto-inverso);
   padding-block: var(--espacio-lg);
 }
@@ -1193,6 +1198,7 @@ main {
 .pasos__item {
   counter-increment: paso;
   background-color: var(--color-superficie);
+  color: var(--color-texto);
   border-radius: var(--radio-md);
   padding: var(--espacio-md) var(--espacio-sm);
   border: 1px solid var(--color-borde);
