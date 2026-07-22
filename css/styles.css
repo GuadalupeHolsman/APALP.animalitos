@@ -504,6 +504,7 @@ main {
   font-weight: 700;
   padding: 0.25rem 0.75rem;
   border-radius: var(--radio-pill);
+  border: 1px solid var(--color-sombra);
 }
 
 .etiqueta-estado_disponible {
@@ -618,6 +619,23 @@ main {
 .tarjeta-animal:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 16px var(--color-sombra);
+}
+
+/* Tarjetas con fondo pastel rotado (mostaza / verde / tostado), para que
+   la grilla de perros se lea colorida en vez de todo blanco. */
+.grilla-destacados .tarjeta-animal:nth-child(3n+1),
+.grilla-adopcion .tarjeta-animal:nth-child(3n+1) {
+  background-color: var(--color-estado-enproceso-fondo);
+}
+
+.grilla-destacados .tarjeta-animal:nth-child(3n+2),
+.grilla-adopcion .tarjeta-animal:nth-child(3n+2) {
+  background-color: var(--color-estado-disponible-fondo);
+}
+
+.grilla-destacados .tarjeta-animal:nth-child(3n),
+.grilla-adopcion .tarjeta-animal:nth-child(3n) {
+  background-color: var(--color-borde);
 }
 
 .tarjeta-animal__imagen-envoltorio {
@@ -1187,13 +1205,15 @@ main {
 
 .pasos__item {
   counter-increment: paso;
-  background-color: var(--color-superficie);
   color: var(--color-texto);
   border-radius: var(--radio-md);
   padding: var(--espacio-md) var(--espacio-sm);
-  border: 1px solid var(--color-borde);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+.pasos__item--mostaza { background-color: var(--color-estado-enproceso-fondo); }
+.pasos__item--verde { background-color: var(--color-estado-disponible-fondo); }
+.pasos__item--tostado { background-color: var(--color-borde); }
 
 .pasos__item:hover {
   transform: translateY(-2px);
@@ -1226,6 +1246,43 @@ main {
 .pasos__texto {
   color: var(--color-texto-suave);
   margin: 0;
+}
+
+/* CtaFinal — banner grande de cierre antes del pie de página */
+.cta-final {
+  background-color: var(--color-secundario);
+  color: var(--color-texto-inverso);
+  padding-block: var(--espacio-lg);
+}
+
+.cta-final a:not(.btn) {
+  color: var(--color-texto-inverso);
+}
+
+.cta-final .btn-secundario {
+  border-color: var(--color-primario);
+  color: var(--color-texto-inverso);
+}
+
+.cta-final .btn-secundario:hover {
+  background-color: var(--color-primario);
+  color: var(--color-texto);
+}
+
+.cta-final__grid {
+  display: grid;
+  gap: var(--espacio-md);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .cta-final__grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.cta-final__foto {
+  aspect-ratio: 4 / 3;
 }
 
 /* PiePagina */
