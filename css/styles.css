@@ -457,10 +457,10 @@ main {
   align-items: center;
   justify-content: center;
   gap: var(--espacio-xs);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--tipo-base);
   padding: 0.75rem 1.5rem;
-  border-radius: var(--radio-pill);
+  border-radius: var(--radio-sm);
   text-decoration: none;
   cursor: pointer;
   border: 2px solid transparent;
@@ -468,8 +468,8 @@ main {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px var(--color-sombra);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px var(--color-sombra);
 }
 
 .btn:active {
@@ -617,8 +617,8 @@ main {
 }
 
 .tarjeta-animal:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px var(--color-sombra);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px var(--color-sombra);
 }
 
 .tarjeta-animal__imagen-envoltorio {
@@ -848,7 +848,7 @@ main {
 .huellas-decorativas__pata {
   position: absolute;
   color: var(--color-primario);
-  opacity: 0.9;
+  opacity: 0.45;
 }
 
 /* MisionSeccion — organismo propio, cita destacada a pantalla completa */
@@ -857,9 +857,11 @@ main {
   margin-inline: auto;
   text-align: center;
   background-color: var(--color-superficie);
-  border: 2px solid var(--color-primario);
+  border: 1px solid var(--color-borde);
+  border-top: 3px solid var(--color-primario);
   border-radius: var(--radio-md);
   padding: var(--espacio-lg) var(--espacio-md);
+  box-shadow: 0 2px 12px var(--color-sombra);
 }
 
 .mision-seccion__comilla {
@@ -888,8 +890,8 @@ main {
 }
 
 .dato-institucional:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px var(--color-sombra);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px var(--color-sombra);
 }
 
 .dato-institucional__numero {
@@ -1206,8 +1208,8 @@ main {
 }
 
 .pasos__item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px var(--color-sombra);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px var(--color-sombra);
 }
 
 .pasos__item:hover::before {
