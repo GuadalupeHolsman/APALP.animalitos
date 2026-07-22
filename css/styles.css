@@ -272,8 +272,8 @@ main {
    ========================================================================== */
 
 .encabezado-principal {
-  background-color: var(--color-secundario);
-  color: var(--color-texto-inverso);
+  background-color: var(--color-fondo);
+  border-bottom: 1px solid var(--color-borde);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -293,14 +293,14 @@ main {
   align-items: center;
   gap: var(--espacio-xs);
   text-decoration: none;
-  color: var(--color-texto-inverso);
+  color: var(--color-texto);
 }
 
 .marca__icono {
   width: 2.25rem;
   height: 2.25rem;
   flex-shrink: 0;
-  color: var(--color-primario);
+  color: var(--color-secundario);
 }
 
 .marca__texto {
@@ -316,8 +316,7 @@ main {
 
 .marca__lugar {
   font-size: var(--tipo-pequeno);
-  color: var(--color-texto-inverso);
-  opacity: 0.75;
+  color: var(--color-texto-suave);
 }
 
 .nav-toggle {
@@ -325,17 +324,17 @@ main {
   align-items: center;
   gap: var(--espacio-xs);
   background: none;
-  border: 1px solid var(--color-texto-inverso);
+  border: 1px solid var(--color-borde);
   border-radius: var(--radio-sm);
   padding: 0.5rem 0.75rem;
-  color: var(--color-texto-inverso);
+  color: var(--color-texto);
   cursor: pointer;
   transition: border-color 0.15s ease, color 0.15s ease;
 }
 
 .nav-toggle:hover {
-  border-color: var(--color-primario);
-  color: var(--color-primario);
+  border-color: var(--color-secundario);
+  color: var(--color-secundario);
 }
 
 .nav-toggle__icono {
@@ -354,7 +353,7 @@ main {
   width: 100%;
   gap: var(--espacio-xs);
   padding-block: 0;
-  border-top: 1px solid var(--color-secundario-hover);
+  border-top: 1px solid var(--color-borde);
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -381,7 +380,7 @@ main {
   display: block;
   padding: 0.5rem 0.25rem;
   text-decoration: none;
-  color: var(--color-texto-inverso);
+  color: var(--color-texto);
   font-weight: 600;
   border-radius: var(--radio-sm);
   transition: color 0.15s ease;
@@ -394,7 +393,7 @@ main {
   right: 0.25rem;
   bottom: 0.15rem;
   height: 2px;
-  background-color: var(--color-primario);
+  background-color: var(--color-secundario);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s ease;
@@ -402,7 +401,7 @@ main {
 
 .nav-principal__enlace:hover,
 .nav-principal__enlace[aria-current="page"] {
-  color: var(--color-primario);
+  color: var(--color-secundario);
 }
 
 .nav-principal__enlace:hover::after,
@@ -1055,8 +1054,7 @@ main {
 
 /* HeroInicio — único organismo que excede el ancho de lectura como fondo */
 .hero-inicio {
-  background-color: var(--color-secundario);
-  color: var(--color-texto-inverso);
+  background-color: var(--color-fondo);
   padding-block: var(--espacio-lg);
 }
 
@@ -1090,7 +1088,7 @@ main {
 
 .hero-inicio__texto {
   font-size: var(--tipo-grande);
-  color: var(--color-texto-inverso);
+  color: var(--color-texto-suave);
   max-width: 45ch;
 }
 
@@ -1099,16 +1097,6 @@ main {
   flex-wrap: wrap;
   gap: var(--espacio-sm);
   margin-top: var(--espacio-md);
-}
-
-.hero-inicio__acciones .btn-secundario {
-  border-color: var(--color-primario);
-  color: var(--color-texto-inverso);
-}
-
-.hero-inicio__acciones .btn-secundario:hover {
-  background-color: var(--color-primario);
-  color: var(--color-texto);
 }
 
 .hero-inicio__ilustracion {
